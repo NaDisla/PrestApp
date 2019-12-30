@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PrestApp.Shared.Views.Usuarios.RegistroUsuarioPage"
+             xmlns:Custom="clr-namespace:PrestApp.Shared.Customs"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <FlexLayout Direction="Column" AlignItems="Center">
+                <Image Source="Fondo01.png"
+                       Aspect="Fill" 
+                       FlexLayout.AlignSelf="Stretch"/>
+            </FlexLayout>
+            <FlexLayout Direction="Column" AlignItems="Center" JustifyContent="SpaceBetween">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0"
+                           Source="logoV5.png"
+                           HeightRequest="115"
+                           WidthRequest="140"
+                           Margin="0,25,0,0" 
+                           FlexLayout.AlignSelf="Center"
+                           Opacity="0.9"/>
+
+                    <Label Grid.Row="1" 
+                           Text="Registro de nuevo usuario"
+                           FontSize="Title"
+                           TextColor="White"
+                           Margin="0,20,0,0"
+                           FontFamily="{StaticResource NunitoBold}"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Custom:MyCustomEntry Grid.Row="2"
+                           PlaceholderColor="#052A48"
+                           TextColor="#052A48"
+                           Margin="5,30,5,0"
+                           WidthRequest="345"
+                           Placeholder="Nombres"
+                           FontFamily="{StaticResource NunitoBold}"               
+                           Opacity="0.7"
+                           FontSize="16"
+                           x:Name="txtNombres"/>
+
+                    <Custom:MyCustomEntry Grid.Row="3"
+                           PlaceholderColor="#052A48"
+                           TextColor="#052A48"
+                           Margin="5,30,5,0"
+                           WidthRequest="345"
+                           Placeholder="Apellidos"
+                           FontFamily="{StaticResource NunitoBold}"               
+                           Opacity="0.7"
+                           FontSize="16"
+                           x:Name="txtApellidos"/>
+
+                    <Custom:MyCustomEntry Grid.Row="4"
+                           PlaceholderColor="#052A48"
+                           TextColor="#052A48"
+                           Margin="5,30,5,0"
+                           WidthRequest="345"
+                           Placeholder="Contraseña"
+                           FontFamily="{StaticResource NunitoBold}" 
+                           Opacity="0.7"
+                           FontSize="16"
+                           x:Name="txtClaveRegistro"
+                           IsPassword="True"/>
+
+                    <Custom:MyCustomEntry Grid.Row="5"
+                           PlaceholderColor="#052A48"
+                           TextColor="#052A48"
+                           Margin="5,30,5,0"
+                           WidthRequest="345"
+                           Placeholder="Confirmar contraseña"
+                           FontFamily="{StaticResource NunitoBold}" 
+                           Opacity="0.7"
+                           FontSize="16"
+                           x:Name="txtConfirmarClaveRegistro"
+                           IsPassword="True"/>
+
+                    <Button Grid.Row="6" 
+                           Text="Registrarme"
+                           FontFamily="{StaticResource NunitoBold}" 
+                           TextColor="White"
+                           BackgroundColor="#8DC63D"
+                           FontSize="18"
+                           Margin="75,30,75,0"
+                           CornerRadius="8"
+                           BorderColor="White"
+                           BorderWidth="2"
+                           Opacity="0.9"
+                           x:Name="btnRegistroUsuario"
+                           Clicked="btnRegistroUsuario_Clicked"
+                            />
+                </Grid>
+            </FlexLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
