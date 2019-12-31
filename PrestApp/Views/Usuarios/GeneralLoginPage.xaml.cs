@@ -29,15 +29,22 @@ namespace PrestApp.Shared.Views.Usuarios
         [Obsolete]
         private async void btnLogin_Clicked(object sender, EventArgs e)
         {
-            LoadingGeneralPage LoadingPage = new LoadingGeneralPage();
-            await PopupNavigation.PushAsync(LoadingPage);
+            LoadingGeneralPage loadingPage = new LoadingGeneralPage();
+            await PopupNavigation.PushAsync(loadingPage);
             await Task.Delay(3000);
             if(txtUsuario.Text == "nadia" && txtClave.Text == "1234")
             {
                 await Navigation.PushAsync(new RegistroUsuarioPage());
-                await PopupNavigation.RemovePageAsync(LoadingPage);
-
+                await PopupNavigation.RemovePageAsync(loadingPage);
             }
+        }
+
+        [Obsolete]
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            OlvidarClavePage olvidarClave = new OlvidarClavePage();
+            await PopupNavigation.PushAsync(olvidarClave);
+            
         }
     }
 }

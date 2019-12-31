@@ -13,6 +13,9 @@
             <OnPlatform x:Key="NunitoBold" x:TypeArguments="x:String">
                 <On Platform="Android" Value="Nunito-Bold.ttf#Nunito-Bold"/>
             </OnPlatform>
+            <OnPlatform x:Key="NunitoSemiBold" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Nunito-SemiBold.ttf#Nunito-SemiBold"/>
+            </OnPlatform>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

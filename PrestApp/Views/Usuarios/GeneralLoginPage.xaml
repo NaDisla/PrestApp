@@ -15,7 +15,7 @@
                        Aspect="Fill" 
                        FlexLayout.AlignSelf="Stretch"/>
             </FlexLayout>
-            <FlexLayout Direction="Column" AlignItems="Center">
+            <FlexLayout Direction="Column" AlignItems="Center" AlignContent="SpaceBetween">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -45,8 +45,10 @@
                     <Custom:MyCustomEntry Grid.Row="2"
                            PlaceholderColor="#052A48"
                            TextColor="#052A48"
-                           Margin="5,30,5,0"
+                           HorizontalOptions="CenterAndExpand"
+                           Margin="0,30,0,0"
                            WidthRequest="345"
+                           FlexLayout.AlignSelf="Auto"
                            Placeholder="Usuario"
                            FontFamily="{StaticResource NunitoBold}"               
                            Opacity="0.7"
@@ -56,8 +58,10 @@
                     <Custom:MyCustomEntry Grid.Row="3"
                            PlaceholderColor="#052A48"
                            TextColor="#052A48"
-                           Margin="5,30,5,0"
+                           HorizontalOptions="CenterAndExpand"
+                           Margin="0,30,0,0"
                            WidthRequest="345"
+                           FlexLayout.AlignSelf="Auto"
                            Placeholder="Contraseña"
                            FontFamily="{StaticResource NunitoBold}" 
                            Opacity="0.7"
@@ -71,23 +75,30 @@
                            TextColor="White"
                            BackgroundColor="#8DC63D"
                            FontSize="18"
-                           Margin="75,30,75,0"
+                           HorizontalOptions="CenterAndExpand"
+                           Margin="0,30,0,0"
+                           FlexLayout.AlignSelf="Auto"
+                           Padding="30,0,30,0"
                            CornerRadius="8"
                            BorderColor="White"
                            BorderWidth="2"
                            Opacity="0.9"
                            x:Name="btnLogin"
-                           Clicked="btnLogin_Clicked"
-                           />
+                           Clicked="btnLogin_Clicked"/>
 
                     <Label Grid.Row="5"
                            Text="He olvidado mi contraseña"
                            FontFamily="{StaticResource NunitoBold}"
                            HorizontalTextAlignment="Center"
                            FontAttributes="Bold"
-                           TextColor="White"
-                           FontSize="16"
-                           Margin="0,13,0,40"/>
+                           TextColor="#D9ECBE"
+                           FontSize="18"
+                           Margin="0,20,0,40"
+                           TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
 
                     <FlexLayout Grid.Row="6" Direction="Column" JustifyContent="End" AlignItems="Start">
                         <BoxView
@@ -121,8 +132,6 @@
                             FlexLayout.AlignSelf="End"
                             x:Name="btnRegistrarse"
                             Clicked="btnRegistrarse_Clicked"/>
-
-
                     </FlexLayout>
                 </Grid>
 
