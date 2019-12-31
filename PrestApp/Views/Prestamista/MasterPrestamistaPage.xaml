@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PrestApp.Shared.Views.Prestamista.MasterPrestamistaPage"
+             NavigationPage.HasNavigationBar="False"
+             >
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+            <Grid BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <StackLayout Padding="0,20,0,0" 
+                                 HorizontalOptions="CenterAndExpand" 
+                                 VerticalOptions="CenterAndExpand">
+                        <Image Source="logoV5.png" 
+                               Aspect="AspectFill" 
+                               WidthRequest="145" 
+                               HeightRequest="125" />
+                    </StackLayout>
+                </Grid>
+                <StackLayout Margin="10,20,10,0" Grid.Row="1" Spacing="15">
+                    <ListView x:Name="listaElementosMenuPrestamista"
+                              WidthRequest="120"
+                              RowHeight="60"
+                              SeparatorVisibility="None" 
+                              BackgroundColor="White" 
+                              ItemSelected="listaElementosMenuPrestamista_ItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout VerticalOptions="FillAndExpand" 
+                                                 Orientation="Horizontal" 
+                                                 Padding="20,10,0,10" 
+                                                 Spacing="20">
+                                        <Image Source="{Binding Imagen}" 
+                                               WidthRequest="40" 
+                                               HeightRequest="40" 
+                                               VerticalOptions="Center" />
+                                        <Label Text="{Binding Nombre}" 
+                                               FontSize="17" 
+                                               VerticalOptions="Center" 
+                                               TextColor="#052A48" 
+                                               FontFamily="{StaticResource NunitoSemiBold}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

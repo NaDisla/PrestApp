@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using PrestApp.Shared.Views.Usuarios;
+using PrestApp.Shared.Views.Prestamista;
 
 namespace PrestApp
 {
@@ -11,7 +12,7 @@ namespace PrestApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new GeneralLoginPage());
+            MainPage = new NavigationPage(new MasterPrestamistaPage());
         }
 
         protected override void OnStart()
