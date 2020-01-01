@@ -16,7 +16,6 @@ namespace PrestApp.Shared.Views.Usuarios
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GeneralLoginPage : ContentPage
     {
-        private bool clicked = false;
         public GeneralLoginPage()
         {
             InitializeComponent();

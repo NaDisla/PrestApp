@@ -6,6 +6,16 @@ namespace PrestApp.Shared.Views.Prestamista
 {
     public class MasterPrestamistaItem
     {
+        public string saludoUsuario
+        {
+            get;
+            set;
+        }
+        public string imagenUsuario
+        {
+            get;
+            set;
+        }
         public string Nombre
         {
             get;

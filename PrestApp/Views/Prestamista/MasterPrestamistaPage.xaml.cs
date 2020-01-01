@@ -24,55 +24,65 @@ namespace PrestApp.Shared.Views.Prestamista
         {
             InitializeComponent();
 
-            //Master = this;
-            //Detail = this;
             listadoMenu = new List<MasterPrestamistaItem>();
 
-            MasterPrestamistaItem page1 = new MasterPrestamistaItem()
+            MasterPrestamistaItem page = new MasterPrestamistaItem()
+            {
+                saludoUsuario = "Hola, Usuario",
+                imagenUsuario = "usuario.png",
+                pageDestination = typeof(PrestamistaHomePage)
+            };
+            listadoMenu.Add(page);
+
+            page = new MasterPrestamistaItem()
             {
                 Nombre = "Inicio",
                 Imagen = "inicio.png",
                 pageDestination = typeof(PrestamistaHomePage)
             };
-            listadoMenu.Add(page1);
+            listadoMenu.Add(page);
 
-            MasterPrestamistaItem page2 = new MasterPrestamistaItem()
+            page = new MasterPrestamistaItem()
             {
                 Nombre="Préstamos",
                 Imagen = "prestamos.png",
                 pageDestination = typeof(PrestamosHomePage)
             };
-            listadoMenu.Add(page2);
+            listadoMenu.Add(page);
 
-            MasterPrestamistaItem page3 = new MasterPrestamistaItem()
+            page = new MasterPrestamistaItem()
             {
                 Nombre = "Pagos",
                 Imagen = "pagos.png",
                 pageDestination = typeof(PagosHomePage)
             };
-            listadoMenu.Add(page3);
+            listadoMenu.Add(page);
 
-            MasterPrestamistaItem page4 = new MasterPrestamistaItem()
+            page = new MasterPrestamistaItem()
             {
                 Nombre = "Clientes",
                 Imagen = "clientes.png",
                 pageDestination = typeof(ClientesHomePage)
             };
-            listadoMenu.Add(page4);
+            listadoMenu.Add(page);
 
-            MasterPrestamistaItem page5 = new MasterPrestamistaItem()
+            page = new MasterPrestamistaItem()
             {
                 Nombre = "Amortizaciones",
-                Imagen = "amortizaciones.png",
+                Imagen = "amortizacion.png",
                 pageDestination = typeof(AmortizacionesHomePage)
             };
-            listadoMenu.Add(page5);
+            listadoMenu.Add(page);
+
+            listaElementosMenuPrestamista.ItemsSource = listadoMenu;
+            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(PrestamistaHomePage)));
         }
 
         private void listaElementosMenuPrestamista_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             MasterPrestamistaItem pagina = e.SelectedItem as MasterPrestamistaItem;
             Detail = new NavigationPage((Page)Activator.CreateInstance(pagina.pageDestination));
+            
             IsPresented = false;
         }
     }

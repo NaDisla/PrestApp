@@ -6,54 +6,127 @@
              mc:Ignorable="d"
              x:Class="PrestApp.Shared.Views.Prestamista.MasterPrestamistaPage"
              NavigationPage.HasNavigationBar="False"
-             >
+             xmlns:customControls="clr-namespace:PrestApp.Shared.Customs"
+             xmlns:Image="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
-            <Grid BackgroundColor="White">
+            <!--Grid BackgroundColor="White">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="200" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions-->
+                <!--Grid>
                     <StackLayout Padding="0,20,0,0" 
                                  HorizontalOptions="CenterAndExpand" 
-                                 VerticalOptions="CenterAndExpand">
-                        <Image Source="logoV5.png" 
-                               Aspect="AspectFill" 
+                                 VerticalOptions="CenterAndExpand"
+                                 BackgroundColor="AliceBlue">
+                        <Image Source="logomenu.png" 
+                               Aspect="AspectFit" 
                                WidthRequest="145" 
                                HeightRequest="125" />
                     </StackLayout>
-                </Grid>
-                <StackLayout Margin="10,20,10,0" Grid.Row="1" Spacing="15">
-                    <ListView x:Name="listaElementosMenuPrestamista"
+                </-->
+            <StackLayout Spacing="15" BackgroundColor="White">
+                <ListView x:Name="listaElementosMenuPrestamista"
                               WidthRequest="120"
                               RowHeight="60"
-                              SeparatorVisibility="None" 
+                              SeparatorVisibility="Default" 
                               BackgroundColor="White" 
                               ItemSelected="listaElementosMenuPrestamista_ItemSelected">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
+                    <ListView.Header>
+                        <Grid HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="FillAndExpand">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="80"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                            </Grid.RowDefinitions>
+
+                            <Image Source="logomenu.png" 
+                                       Aspect="AspectFit" 
+                                       Grid.RowSpan="3"
+                                       Grid.ColumnSpan="4"
+                                       Margin="0,10,0,0"/>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" 
+                                         Grid.Row="2" 
+                                         Grid.ColumnSpan="4">
+                                <BoxView BackgroundColor="#052A48"
+                                         HeightRequest="1"
+                                         Margin="0,10,0,0"/>
+                            </StackLayout>
+
+                            <!--Image:CircleImage Margin="10,0,0,0"
+                                               Source="usuario.png"
+                                               Grid.ColumnSpan="4"
+                                               Grid.Row="3"
+                                               WidthRequest="60"
+                                               HeightRequest="60"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="End"/>
+
+                            <Label Text="Hola, Usuario"
+                                   FontFamily="{StaticResource NunitoRegular}"
+                                   Margin="0,15,0,0"
+                                   Grid.ColumnSpan="4"
+                                   Grid.Row="3"
+                                   HorizontalOptions="FillAndExpand"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="#052A48"
+                                   FontSize="Medium"/-->
+                        </Grid>
+                        
+                    </ListView.Header>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <customControls:SelectedItemMenu SelectedBackgroundColor="LightGray">
+                                <ViewCell.View>
                                     <StackLayout VerticalOptions="FillAndExpand" 
                                                  Orientation="Horizontal" 
-                                                 Padding="20,10,0,10" 
-                                                 Spacing="20">
-                                        <Image Source="{Binding Imagen}" 
+                                                 Padding="20,10,0,10">
+                                            <Image:CircleImage Source="{Binding imagenUsuario}"
+                                               WidthRequest="60"
+                                               HeightRequest="60"
+                                               VerticalOptions="Center"/>
+                                            <Label Text="{Binding saludoUsuario}"
+                                               FontFamily="{StaticResource NunitoRegular}"
+                                               HorizontalTextAlignment="Center"
+                                               TextColor="#052A48"
+                                               FontSize="Medium"/>
+                                            <Image Source="{Binding Imagen}" 
                                                WidthRequest="40" 
                                                HeightRequest="40" 
-                                               VerticalOptions="Center" />
+                                               VerticalOptions="Center"/>
                                         <Label Text="{Binding Nombre}" 
                                                FontSize="17" 
                                                VerticalOptions="Center" 
                                                TextColor="#052A48" 
                                                FontFamily="{StaticResource NunitoSemiBold}"/>
                                     </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackLayout>
-            </Grid>
+                                </ViewCell.View>
+                                
+                            </customControls:SelectedItemMenu>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <!--/Grid-->
         </ContentPage>
     </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            
+        </NavigationPage>
+    </MasterDetailPage.Detail>
 </MasterDetailPage>
