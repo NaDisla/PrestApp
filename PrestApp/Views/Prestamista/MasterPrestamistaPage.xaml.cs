@@ -20,21 +20,27 @@ namespace PrestApp.Shared.Views.Prestamista
             get;
             set;
         }
+        public List<MasterPrestamistaItemUsuario> listaUsuario
+        {
+            get;
+            set;
+        }
         public MasterPrestamistaPage()
         {
             InitializeComponent();
 
             listadoMenu = new List<MasterPrestamistaItem>();
+            listaUsuario = new List<MasterPrestamistaItemUsuario>();
 
-            MasterPrestamistaItem page = new MasterPrestamistaItem()
+            MasterPrestamistaItemUsuario pageUsuario = new MasterPrestamistaItemUsuario()
             {
                 saludoUsuario = "Hola, Usuario",
                 imagenUsuario = "usuario.png",
-                pageDestination = typeof(PrestamistaHomePage)
+                pageDestinationUsuario = typeof(PrestamosHomePage)
             };
-            listadoMenu.Add(page);
+            listaUsuario.Add(pageUsuario);
 
-            page = new MasterPrestamistaItem()
+            MasterPrestamistaItem page = new MasterPrestamistaItem()
             {
                 Nombre = "Inicio",
                 Imagen = "inicio.png",
@@ -74,6 +80,7 @@ namespace PrestApp.Shared.Views.Prestamista
             };
             listadoMenu.Add(page);
 
+            viewUsuario.ItemsSource = listaUsuario;
             listaElementosMenuPrestamista.ItemsSource = listadoMenu;
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(PrestamistaHomePage)));
         }
@@ -82,7 +89,13 @@ namespace PrestApp.Shared.Views.Prestamista
         {
             MasterPrestamistaItem pagina = e.SelectedItem as MasterPrestamistaItem;
             Detail = new NavigationPage((Page)Activator.CreateInstance(pagina.pageDestination));
-            
+            IsPresented = false;
+        }
+
+        private void viewUsuario_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            MasterPrestamistaItemUsuario pageUsuario = e.SelectedItem as MasterPrestamistaItemUsuario;
+            Detail = new NavigationPage((Page)Activator.CreateInstance(pageUsuario.pageDestinationUsuario));
             IsPresented = false;
         }
     }

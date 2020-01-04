@@ -10,32 +10,17 @@
              xmlns:Image="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
-            <!--Grid BackgroundColor="White">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="200"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions-->
-                <!--Grid>
-                    <StackLayout Padding="0,20,0,0" 
-                                 HorizontalOptions="CenterAndExpand" 
-                                 VerticalOptions="CenterAndExpand"
-                                 BackgroundColor="AliceBlue">
-                        <Image Source="logomenu.png" 
-                               Aspect="AspectFit" 
-                               WidthRequest="145" 
-                               HeightRequest="125" />
-                    </StackLayout>
-                </-->
-            <StackLayout Spacing="15" BackgroundColor="White">
-                <ListView x:Name="listaElementosMenuPrestamista"
-                              WidthRequest="120"
-                              RowHeight="60"
-                              SeparatorVisibility="Default" 
-                              BackgroundColor="White" 
-                              ItemSelected="listaElementosMenuPrestamista_ItemSelected">
+            <StackLayout BackgroundColor="White">
+                <!--HEADER CON LOGO-->
+                <ListView x:Name="viewUsuario"
+                          WidthRequest="120"
+                          RowHeight="55"
+                          SeparatorVisibility="Default" 
+                          BackgroundColor="White"
+                          ItemSelected="viewUsuario_ItemSelected">
                     <ListView.Header>
                         <Grid HorizontalOptions="FillAndExpand"
-                                  VerticalOptions="FillAndExpand">
+                              VerticalOptions="FillAndExpand">
 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -44,84 +29,88 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="80"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="*"/>
+                                
                             </Grid.RowDefinitions>
 
                             <Image Source="logomenu.png" 
                                        Aspect="AspectFit" 
-                                       Grid.RowSpan="3"
-                                       Grid.ColumnSpan="4"
-                                       Margin="0,10,0,0"/>
+                                  
+                                        Grid.Row="1"
+                                   Grid.ColumnSpan="4"
+                                   Margin="0,-20,0,0"
+                                       />
 
                             <StackLayout HorizontalOptions="FillAndExpand" 
-                                         Grid.Row="2" 
+                                         Grid.Row="2"
                                          Grid.ColumnSpan="4">
-                                <BoxView BackgroundColor="#052A48"
-                                         HeightRequest="1"
-                                         Margin="0,10,0,0"/>
+                                <BoxView BackgroundColor="#379FC0"
+                                         HeightRequest="1"/>
                             </StackLayout>
-
-                            <!--Image:CircleImage Margin="10,0,0,0"
-                                               Source="usuario.png"
-                                               Grid.ColumnSpan="4"
-                                               Grid.Row="3"
-                                               WidthRequest="60"
-                                               HeightRequest="60"
-                                               HorizontalOptions="Start"
-                                               VerticalOptions="End"/>
-
-                            <Label Text="Hola, Usuario"
-                                   FontFamily="{StaticResource NunitoRegular}"
-                                   Margin="0,15,0,0"
-                                   Grid.ColumnSpan="4"
-                                   Grid.Row="3"
-                                   HorizontalOptions="FillAndExpand"
-                                   HorizontalTextAlignment="Center"
-                                   TextColor="#052A48"
-                                   FontSize="Medium"/-->
                         </Grid>
-                        
                     </ListView.Header>
+                    <!---HEADER CON LOGO-->
+                    
+                    <!--OPCIÓN USUARIO-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <customControls:SelectedItemMenu SelectedBackgroundColor="LightGray">
+                                <ViewCell.View>
+                                    <StackLayout VerticalOptions="FillAndExpand"
+                                                 Orientation="Horizontal" 
+                                                 Padding="20,15,10,10">
+                                        <Image:CircleImage Source="{Binding imagenUsuario}"
+                                                           WidthRequest="50"
+                                                           HeightRequest="50"/>
+                                        <Label Text="{Binding saludoUsuario}"
+                                               FontFamily="{StaticResource NunitoRegular}"
+                                               TextColor="#052A48"
+                                               FontSize="Medium"
+                                               VerticalOptions="Center"/>
+                                        <!--StackLayout HorizontalOptions="FillAndExpand">
+                                            <BoxView BackgroundColor="#379FC0"
+                                                     HeightRequest="1"/>
+                                        </-->
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </customControls:SelectedItemMenu>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <!--OPCIÓN USUARIO-->
 
+                <!--ELEMENTOS MENÚ-->
+                <ListView x:Name="listaElementosMenuPrestamista"
+                              WidthRequest="120"
+                              RowHeight="60"
+                              SeparatorVisibility="Default" 
+                              BackgroundColor="White" 
+                              ItemSelected="listaElementosMenuPrestamista_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <customControls:SelectedItemMenu SelectedBackgroundColor="LightGray">
                                 <ViewCell.View>
                                     <StackLayout VerticalOptions="FillAndExpand" 
                                                  Orientation="Horizontal" 
-                                                 Padding="20,10,0,10">
-                                            <Image:CircleImage Source="{Binding imagenUsuario}"
-                                               WidthRequest="60"
-                                               HeightRequest="60"
+                                                 Padding="20,15,10,10">
+                                        <Image Source="{Binding Imagen}"
+                                               WidthRequest="50"
+                                               HeightRequest="50"
                                                VerticalOptions="Center"/>
-                                            <Label Text="{Binding saludoUsuario}"
-                                               FontFamily="{StaticResource NunitoRegular}"
-                                               HorizontalTextAlignment="Center"
-                                               TextColor="#052A48"
-                                               FontSize="Medium"/>
-                                            <Image Source="{Binding Imagen}" 
-                                               WidthRequest="40" 
-                                               HeightRequest="40" 
-                                               VerticalOptions="Center"/>
-                                        <Label Text="{Binding Nombre}" 
+                                        <Label Text="{Binding Nombre}"
                                                FontSize="17" 
                                                VerticalOptions="Center" 
                                                TextColor="#052A48" 
-                                               FontFamily="{StaticResource NunitoSemiBold}"/>
+                                               FontFamily="{StaticResource NunitoBold}"/>
                                     </StackLayout>
                                 </ViewCell.View>
-                                
                             </customControls:SelectedItemMenu>
-
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <!--ELEMENTOS MENÚ-->
             </StackLayout>
-            <!--/Grid-->
         </ContentPage>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>

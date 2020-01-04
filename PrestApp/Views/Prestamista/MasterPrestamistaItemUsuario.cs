@@ -4,19 +4,19 @@ using System.Text;
 
 namespace PrestApp.Shared.Views.Prestamista
 {
-    public class MasterPrestamistaItem
+    public class MasterPrestamistaItemUsuario
     {
-        public string Nombre
+        public string saludoUsuario
         {
             get;
             set;
         }
-        public string Imagen
+        public string imagenUsuario
         {
             get;
             set;
         }
-        public Type pageDestination
+        public Type pageDestinationUsuario
         {
             get;
             set;
