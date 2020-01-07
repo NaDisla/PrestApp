@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using PrestApp.Shared.Views.Prestamista.Prestamos;
 using PrestApp.Shared.Views.Prestamista.Pagos;
 using PrestApp.Shared.Views.Prestamista.Amortizaciones;
@@ -25,20 +27,20 @@ namespace PrestApp.Shared.Views.Prestamista
             get;
             set;
         }
+
         public MasterPrestamistaPage()
         {
             InitializeComponent();
-
             listadoMenu = new List<MasterPrestamistaItem>();
-            listaUsuario = new List<MasterPrestamistaItemUsuario>();
+            //listaUsuario = new List<MasterPrestamistaItemUsuario>();
 
-            MasterPrestamistaItemUsuario pageUsuario = new MasterPrestamistaItemUsuario()
+            /*MasterPrestamistaItemUsuario pageUsuario = new MasterPrestamistaItemUsuario()
             {
                 saludoUsuario = "Hola, Usuario",
                 imagenUsuario = "usuario.png",
-                pageDestinationUsuario = typeof(PrestamosHomePage)
+                pageDestinationUsuario = typeof(PagosHomePage)
             };
-            listaUsuario.Add(pageUsuario);
+            listaUsuario.Add(pageUsuario);*/
 
             MasterPrestamistaItem page = new MasterPrestamistaItem()
             {
@@ -80,9 +82,30 @@ namespace PrestApp.Shared.Views.Prestamista
             };
             listadoMenu.Add(page);
 
-            viewUsuario.ItemsSource = listaUsuario;
+            viewUsuario.ItemsSource = collectionUsuario();
             listaElementosMenuPrestamista.ItemsSource = listadoMenu;
+            //listaElementosMenuPrestamista.HeightRequest = (1 * listadoMenu.Count) + (2 * listadoMenu.Count);
+
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(PrestamistaHomePage)));
+        }
+
+        private ObservableCollection<MasterPrestamistaItemUsuario> collectionUsuario()
+        {
+            ObservableCollection<MasterPrestamistaItemUsuario> usuarioCollection = new ObservableCollection<MasterPrestamistaItemUsuario>();
+            try
+            {
+                usuarioCollection.Add(new MasterPrestamistaItemUsuario { saludoUsuario = "Hola, Usuario", imagenUsuario = "usuario.png", pageDestinationUsuario = typeof(PagosHomePage) });
+                //viewUsuario.HeightRequest = -10 * usuarioCollection.Count;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return usuarioCollection;
+
+
         }
 
         private void listaElementosMenuPrestamista_ItemSelected(object sender, SelectedItemChangedEventArgs e)
